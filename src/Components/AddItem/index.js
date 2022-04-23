@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 
-const AddItem = ({pesos, setPesos, valores, setValores, nomes, setNomes}) =>  {
+const AddItem = ({
+  pesos, setPesos, valores, setValores, nomes, setNomes, itemList, setItemList
+}) =>  {
     const [show, setShow] = useState(false);
     const [pesoItem, setPesoItem] = useState(0);
     const [valorItem, setValorItem] = useState(0);
@@ -34,6 +36,7 @@ const AddItem = ({pesos, setPesos, valores, setValores, nomes, setNomes}) =>  {
       setNomes([...nomes, nomeItem]);
       setPesos([...pesos, pesoItem]);
       setValores([...valores, valorItem]);
+      setItemList([...itemList, {nome: nomeItem, valor: valorItem, peso: pesoItem}])
       setPesoItem(0);
       setValorItem(0);
       setNomeItem('');
@@ -41,7 +44,11 @@ const AddItem = ({pesos, setPesos, valores, setValores, nomes, setNomes}) =>  {
   
     return (
       <div>
-        <Button variant="primary" onClick={handleShow}>
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          style={{ backgroundColor: 'blue'}}
+        >
           Adicionar Item
         </Button>
   

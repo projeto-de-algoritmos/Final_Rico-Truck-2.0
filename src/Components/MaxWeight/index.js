@@ -22,7 +22,11 @@ const MaxWeight = ({ setMaxWeight}) =>  {
   
     return (
       <div>
-        <Button variant="primary" onClick={handleShow}>
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          style={{ backgroundColor: 'blue'}}
+        >
           Informar Carga Máxima Permitida
         </Button>
   

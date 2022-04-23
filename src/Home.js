@@ -4,13 +4,15 @@ import AddItem from './Components/AddItem/index';
 import MaxWeight from './Components/MaxWeight';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
-// import Caminhao from './img/caminhao.png';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Van from './img/van.png';
 import Logo from './img/truck.svg';
 import knapsack from './Knapsack';
 import ListItems from './Components/ListItems';
 import { Alert, NavbarBrand } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
+import sortItens from './MergeSort';
+import { changeTipo } from './MergeSort';
 
 function Home() {
   const [pesos, setPesos] = useState([0]);
@@ -19,23 +21,14 @@ function Home() {
   const [maxWeight, setMaxWeight] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [result, setResult] = useState(0);
-
+  const [itemList, setItemList] = useState([{nome: nomes[0], valor: valores[0], peso: pesos[0]}]);
   return (
     <div className="App">
       <Navbar bg="navbar" variant="dark" sticky="top">
-        <NavbarBrand style={{ padding: '20px'}}><img src={Logo} style={{padding: '20px'}}/>Rico Truck</NavbarBrand>
+        <NavbarBrand style={{ padding: '20px'}}><img src={Logo} alt="logo da empresa que é um caminhão" style={{padding: '20px'}}/>Rico Truck</NavbarBrand>
       </Navbar>
       <div className="first">
         <div className="imagens">
-        {/* <img
-            src={Caminhao}
-            alt="Caminhao"
-            style={{
-              width: '50%',
-              height: '38%',
-              padding: '2%'
-            }}
-          /> */}
           <img
           src={Van}
           alt="Van"
@@ -64,14 +57,42 @@ function Home() {
           setValores={setValores}
           nomes={nomes}
           setNomes={setNomes}
+          itemList={itemList}
+          setItemList={setItemList}
         />
       </div>
       <div style={{color: '#636060', fontFamily: 'Helvetica', fontSize: '20px', fontWeight: '800', marginTop: '10px', height: '100px', textAlign: 'left', marginLeft: '30px' }}>Acompanhe a lista de itens já adicionados</div>
+      <Dropdown>
+        <Dropdown.Toggle style={{ backgroundColor: 'blue'}} id="dropdown-basic">
+          Ordenar itens por
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item
+            onClick={() => {changeTipo(1); setItemList(sortItens(nomes,valores,pesos))}}
+          >
+            Menor valor
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {changeTipo(2); setItemList(sortItens(nomes,valores,pesos))}}
+          >
+            Menor peso
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {changeTipo(3); setItemList(sortItens(nomes,valores,pesos))}}
+          >
+            Maior valor
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {changeTipo(4); setItemList(sortItens(nomes,valores,pesos))}}
+          >
+            Maior peso
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
 
       <ListItems
-        nomes={nomes}
-        valores={valores}
-        pesos={pesos}
+        itemList={itemList}
       />
       {
           showAlert ?
@@ -85,7 +106,13 @@ function Home() {
                   O valor máximo possível de ser transportado no seu caminhão é R${result}
               </p>
           </Alert>
-          : <Button onClick={()=> {setShowAlert(true); knapsack({valores, pesos, maxWeight, setResult})}} style={{marginBottom: '15px'}}>Calcular</Button>
+          : 
+          <Button
+            onClick={()=> {setShowAlert(true); knapsack({valores, pesos, maxWeight, setResult})}}
+            style={{marginBottom: '15px', backgroundColor: 'blue'}}
+          >
+            Calcular
+          </Button>
       }
     </div>
   );

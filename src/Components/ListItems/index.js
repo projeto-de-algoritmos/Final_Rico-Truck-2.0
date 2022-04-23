@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const ListItems = ({ nomes, valores, pesos}) =>  {
+const ListItems = ({ itemList}) =>  {
     return (
       <div
         className="list-container"
@@ -19,25 +19,25 @@ const ListItems = ({ nomes, valores, pesos}) =>  {
         </div>
         <div className="list-structure">
             <div className="info-div">
-                {nomes.map((nome) => (
+                {itemList.map((item) => (
                     <p>
-                        {nome}
+                        {item.nome}
                     </p>
                 ))}
             </div>
 
             <div className="info-div">
-                {valores.map((valor) => (
+                {itemList.map((item) => (
                     <p>
-                        R$ {valor}
+                        R$ {item.valor}
                     </p>
                 ))}
             </div>
 
             <div className="info-div">
-                {pesos.map((peso) => (
+                {itemList.map((item) => (
                     <p>
-                        {peso} Kg
+                        {item.peso} Kg
                     </p>
                 ))}
             </div>
