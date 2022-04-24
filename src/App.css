@@ -13,3 +13,77 @@
   height: 60px;
   background-color: #455889;
 }
+
+.container-pagina-mapa{
+  display: flex;
+  flex-direction: row;
+}
+
+.container-left{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border-right-width: 2px;
+}
+
+.container-right{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+}
+
+.dropdown-start-end{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 10% 2% 2% 2%;
+}
+
+.button-dijkstra{
+  background-color: #f90355;
+  border-radius: 5%;
+}
+
+.instructions{
+  background-color: #ffe743;
+  border-radius: 0.2rem;
+  font-size: 14px;
+  padding: 0.5rem;
+  margin: 1%;
+}
+
+.title-map {
+  color: #636060;
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: 800;
+  margin-top: 80px;
+  height: 100px;
+  text-align: left;
+  margin-left: 30px
+}
+
+.subtitle-map {
+  color: #7F63CF;
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: 800;
+  margin-top: 50px;
+  height: 100px;
+  text-align: left;
+  margin-left: 30px
+}
+
+.first-title-map{
+  font-size: 20px;
+  margin-top: 70px;
+  font-family: Helvetica;
+  color: #f90355;
+  border-radius: 5px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+}

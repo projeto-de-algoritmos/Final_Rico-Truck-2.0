@@ -2,11 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './Home';
+import Mapa from './Mapa';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home/>}></Route>
+        <Route exact path="/mapa" element={<Mapa/>}></Route>
+      </Routes>
+    </Router>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

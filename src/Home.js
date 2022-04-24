@@ -11,6 +11,7 @@ import knapsack from './Knapsack';
 import ListItems from './Components/ListItems';
 import { Alert, NavbarBrand } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import sortItens from './MergeSort';
 import { changeTipo } from './MergeSort';
 
@@ -26,6 +27,8 @@ function Home() {
     <div className="App">
       <Navbar bg="navbar" variant="dark" sticky="top">
         <NavbarBrand style={{ padding: '20px'}}><img src={Logo} alt="logo da empresa que é um caminhão" style={{padding: '20px'}}/>Rico Truck</NavbarBrand>
+        <Link to="/" style={{textDecoration: 'none', padding: '1.5rem', color: 'white'}}>Home</Link>
+        <Link to="/mapa" style={{textDecoration: 'none', color: 'white'}}>Mapa</Link>
       </Navbar>
       <div className="first">
         <div className="imagens">
